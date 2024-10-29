@@ -1,6 +1,7 @@
 import type { FC, PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import type { Product } from '../types/Products';
+import { StopPropagation } from './StopPropagation';
 import { formatAsCurrency } from '@acme/utils';
 
 export type ProductCardProps = {
@@ -30,7 +31,7 @@ export const ProductCard: FC<ProductCardProps> = ({ product, children }) => {
           {formatAsCurrency(product.price)}
         </p>
       </div>
-      {children}
+      <StopPropagation>{children}</StopPropagation>
     </Link>
   );
 };

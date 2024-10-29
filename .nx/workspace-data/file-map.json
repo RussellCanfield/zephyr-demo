@@ -17,28 +17,20 @@
         "hash": "5443105041930014821"
       },
       {
-        "file": ".gitignore",
-        "hash": "14705395205556544810"
+        "file": "squadron.yaml",
+        "hash": "2853208085046838748"
       },
       {
-        "file": ".prettierignore",
-        "hash": "14688272390704683536"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "6807003856908271136"
-      },
-      {
-        "file": "README.md",
-        "hash": "22080156993399129"
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
       },
       {
         "file": "migrations.json",
         "hash": "4583345520328765039"
+      },
+      {
+        "file": "pnpm-workspace.yaml",
+        "hash": "2373171212127886927"
       },
       {
         "file": "nx.json",
@@ -49,79 +41,35 @@
         "hash": "7087448628929559750"
       },
       {
+        "file": "README.md",
+        "hash": "22080156993399129"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "14705395205556544810"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "6807003856908271136"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
         "file": "pnpm-lock.yaml",
         "hash": "13156883779649990250"
       },
       {
-        "file": "pnpm-workspace.yaml",
-        "hash": "2373171212127886927"
-      },
-      {
-        "file": "squadron.yaml",
-        "hash": "2853208085046838748"
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
       },
       {
         "file": "tsconfig.base.json",
         "hash": "6422665021970253171"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
       }
     ],
     "projectFileMap": {
-      "host-e2e": [
-        {
-          "file": "apps/host-e2e/.eslintrc.json",
-          "hash": "632147010597293032"
-        },
-        {
-          "file": "apps/host-e2e/playwright.config.ts",
-          "hash": "7710149103131713860",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/host-e2e/project.json",
-          "hash": "468957850815794493"
-        },
-        {
-          "file": "apps/host-e2e/src/example.spec.ts",
-          "hash": "16019101014373124625",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        }
-      ],
-      "hero-e2e": [
-        {
-          "file": "apps/hero-e2e/.eslintrc.json",
-          "hash": "3221422119017680556"
-        },
-        {
-          "file": "apps/hero-e2e/playwright.config.ts",
-          "hash": "10605555973305149757",
-          "deps": [
-            "npm:@playwright/test",
-            "npm:@nx/playwright",
-            "npm:@nx/devkit"
-          ]
-        },
-        {
-          "file": "apps/hero-e2e/project.json",
-          "hash": "17333216508240601698"
-        },
-        {
-          "file": "apps/hero-e2e/src/example.spec.ts",
-          "hash": "16019101014373124625",
-          "deps": [
-            "npm:@playwright/test"
-          ]
-        }
-      ],
       "hero": [
         {
           "file": "apps/hero/biome.json",
@@ -150,7 +98,7 @@
         },
         {
           "file": "apps/hero/rspack.config.ts",
-          "hash": "6876472825225462382",
+          "hash": "3084079283469079966",
           "deps": [
             "npm:@nx/rspack",
             "npm:zephyr-webpack-plugin"
@@ -316,6 +264,32 @@
           ]
         }
       ],
+      "hero-e2e": [
+        {
+          "file": "apps/hero-e2e/.eslintrc.json",
+          "hash": "3221422119017680556"
+        },
+        {
+          "file": "apps/hero-e2e/playwright.config.ts",
+          "hash": "10605555973305149757",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/hero-e2e/project.json",
+          "hash": "17333216508240601698"
+        },
+        {
+          "file": "apps/hero-e2e/src/example.spec.ts",
+          "hash": "16019101014373124625",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        }
+      ],
       "host": [
         {
           "file": "apps/host/.gitignore",
@@ -348,7 +322,7 @@
         },
         {
           "file": "apps/host/rspack.config.ts",
-          "hash": "7365936864893979840",
+          "hash": "17394999695550183291",
           "deps": [
             "npm:@nx/rspack",
             "npm:zephyr-webpack-plugin"
@@ -413,7 +387,7 @@
         },
         {
           "file": "apps/host/src/app/features/Products/components/ProductSearchResults.tsx",
-          "hash": "8986283850234910336",
+          "hash": "13568403353955432931",
           "deps": [
             "npm:jotai",
             "components"
@@ -565,6 +539,32 @@
           ]
         }
       ],
+      "host-e2e": [
+        {
+          "file": "apps/host-e2e/.eslintrc.json",
+          "hash": "632147010597293032"
+        },
+        {
+          "file": "apps/host-e2e/playwright.config.ts",
+          "hash": "7710149103131713860",
+          "deps": [
+            "npm:@playwright/test",
+            "npm:@nx/playwright",
+            "npm:@nx/devkit"
+          ]
+        },
+        {
+          "file": "apps/host-e2e/project.json",
+          "hash": "468957850815794493"
+        },
+        {
+          "file": "apps/host-e2e/src/example.spec.ts",
+          "hash": "16019101014373124625",
+          "deps": [
+            "npm:@playwright/test"
+          ]
+        }
+      ],
       "components": [
         {
           "file": "packages/components/README.md",
@@ -609,7 +609,7 @@
         },
         {
           "file": "packages/components/src/components/ProductCard.tsx",
-          "hash": "6008688743836908437",
+          "hash": "16321245865537228088",
           "deps": [
             "npm:react",
             "npm:react-router-dom",
@@ -619,6 +619,10 @@
         {
           "file": "packages/components/src/components/ProductCarousel.tsx",
           "hash": "4957123609369098590"
+        },
+        {
+          "file": "packages/components/src/components/StopPropagation.tsx",
+          "hash": "10893898725076861752"
         },
         {
           "file": "packages/components/src/data/ProductData.ts",

@@ -4,7 +4,6 @@ import { join } from 'node:path';
 import mfConfig from './module-federation.config';
 import { withZephyr } from 'zephyr-webpack-plugin';
 
-const ZC = process.env.ZC
 module.exports = composePlugins(
   withNx(),
   withReact(),
@@ -43,5 +42,4 @@ module.exports = composePlugins(
 
     return config;
   }
-  //withZephyr()
 );

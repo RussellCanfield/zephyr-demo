@@ -1,7 +1,6 @@
 import { useAtom } from 'jotai';
 import { searchTextAtom, searchSizeAtom, searchColorAtom } from '../store';
-import { ProductCard, useProducts } from '@acme/components';
-import { useCart } from '@acme/components';
+import { ProductCard, useProducts, useCart } from '@acme/components';
 
 const ProductSearchResults = () => {
   const [searchText] = useAtom(searchTextAtom);
