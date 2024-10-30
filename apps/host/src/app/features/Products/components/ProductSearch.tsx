@@ -1,12 +1,76 @@
+import React, { useCallback } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/20/solid';
-import { searchTextAtom, searchSizeAtom, searchColorAtom } from '../store';
-import { useAtom } from 'jotai';
 import { ProductSize, ProductColor } from '@acme/components';
+import { useSearchParams } from 'react-router-dom';
 
-const ProductSearch = () => {
-  const [searchText, setSearchText] = useAtom(searchTextAtom);
-  const [searchSize, setSearchSize] = useAtom(searchSizeAtom);
-  const [searchColor, setSearchColor] = useAtom(searchColorAtom);
+interface ProductSearchProps {
+  initialSearch?: string;
+  initialSize?: ProductSize;
+  initialColor?: ProductColor;
+  onSearch: (search: {
+    text: string;
+    size: ProductSize | undefined;
+    color: ProductColor | undefined;
+  }) => void;
+}
+
+const ProductSearch = ({
+  initialSearch = '',
+  initialSize,
+  initialColor,
+  onSearch,
+}: ProductSearchProps) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const searchText = searchParams.get('q') || initialSearch;
+  const searchSize = (searchParams.get('size') as ProductSize) || initialSize;
+  const searchColor =
+    (searchParams.get('color') as ProductColor) || initialColor;
+
+  const updateSearchParams = useCallback(
+    (text?: string, size?: ProductSize, color?: ProductColor) => {
+      const newParams = new URLSearchParams(searchParams);
+
+      if (text !== undefined) {
+        if (text) {
+          newParams.set('q', text);
+        } else {
+          newParams.delete('q');
+        }
+      }
+
+      if (size !== undefined) {
+        if (size) {
+          newParams.set('size', size);
+        } else {
+          newParams.delete('size');
+        }
+      }
+
+      if (color !== undefined) {
+        if (color) {
+          newParams.set('color', color);
+        } else {
+          newParams.delete('color');
+        }
+      }
+
+      setSearchParams(newParams);
+      onSearch({
+        text: text ?? searchText,
+        size: size ?? searchSize,
+        color: color ?? searchColor,
+      });
+    },
+    [
+      searchParams,
+      setSearchParams,
+      onSearch,
+      searchText,
+      searchSize,
+      searchColor,
+    ]
+  );
 
   return (
     <div className="container mx-auto p-4 text-black dark:text-white">
@@ -18,14 +82,22 @@ const ProductSearch = () => {
               className="p-2 rounded text-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black text-black dark:text-white w-full focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-200"
               placeholder="Search Products"
               value={searchText}
-              onChange={(e) => setSearchText(e.target.value)}
+              onChange={(e) =>
+                updateSearchParams(e.target.value, undefined, undefined)
+              }
             />
             <MagnifyingGlassIcon className="w-5 h-5 absolute right-3 top-3 text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white transition-colors duration-200" />
           </div>
           <select
             className="p-2 rounded text-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black text-black dark:text-white w-full focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-200"
-            value={searchSize}
-            onChange={(e) => setSearchSize(e.target.value as ProductSize)}
+            value={searchSize || ''}
+            onChange={(e) =>
+              updateSearchParams(
+                undefined,
+                e.target.value as ProductSize,
+                undefined
+              )
+            }
           >
             <option value="">Select Size</option>
             {Object.values(ProductSize).map((size) => (
@@ -36,8 +108,14 @@ const ProductSearch = () => {
           </select>
           <select
             className="p-2 rounded text-lg border border-gray-300 dark:border-gray-600 bg-white dark:bg-black text-black dark:text-white w-full focus:outline-none focus:ring-2 focus:ring-gray-900 dark:focus:ring-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-colors duration-200"
-            value={searchColor}
-            onChange={(e) => setSearchColor(e.target.value as ProductColor)}
+            value={searchColor || ''}
+            onChange={(e) =>
+              updateSearchParams(
+                undefined,
+                undefined,
+                e.target.value as ProductColor
+              )
+            }
           >
             <option value="">Select Color</option>
             {Object.values(ProductColor).map((color) => (

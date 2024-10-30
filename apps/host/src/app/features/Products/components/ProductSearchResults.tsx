@@ -1,19 +1,30 @@
-import { useAtom } from 'jotai';
-import { searchTextAtom, searchSizeAtom, searchColorAtom } from '../store';
+import React, { useMemo } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { ProductCard, useProducts, useCart } from '@acme/components';
 
 const ProductSearchResults = () => {
-  const [searchText] = useAtom(searchTextAtom);
-  const [searchSize] = useAtom(searchSizeAtom);
-  const [searchColor] = useAtom(searchColorAtom);
+  const [searchParams] = useSearchParams();
   const { products } = useProducts();
   const { addToCart } = useCart();
 
-  const filteredProducts = products.filter(
-    (product) =>
-      product.title.toLowerCase().includes(searchText.toLowerCase()) &&
-      (searchSize ? product.size === searchSize : true) &&
-      (searchColor ? product.color === searchColor : true)
+  const searchText = searchParams.get('q') || '';
+  const searchSize = searchParams.get('size') || '';
+  const searchColor = searchParams.get('color') || '';
+
+  const filteredProducts = useMemo(() => {
+    return products.filter(
+      (product) =>
+        product.title.toLowerCase().includes(searchText.toLowerCase()) &&
+        (searchSize ? product.size === searchSize : true) &&
+        (searchColor ? product.color === searchColor : true)
+    );
+  }, [products, searchText, searchSize, searchColor]);
+
+  const handleAddToCart = React.useCallback(
+    (product) => {
+      addToCart(product);
+    },
+    [addToCart]
   );
 
   return (
@@ -25,7 +36,7 @@ const ProductSearchResults = () => {
             <div key={product.id} className="flex justify-center w-full">
               <ProductCard product={product}>
                 <button
-                  onClick={() => addToCart(product)}
+                  onClick={() => handleAddToCart(product)}
                   type="button"
                   className={`
       mt-4 w-full inline-flex items-center justify-center
