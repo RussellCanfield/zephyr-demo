@@ -14,7 +14,7 @@ const EmptyCart: React.FC = () => {
       <div className="max-w-2xl w-full">
         <ShoppingCartIcon className="w-16 h-16 text-gray-400 mb-4 mx-auto" />
         <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-200 mb-2 text-center">
-          Your cart is empty
+          Your cart is empty.
         </h3>
         <p className="text-gray-600 dark:text-gray-400 mb-6 text-center">
           Looks like you haven't added any items to your cart yet.
