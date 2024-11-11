@@ -1,45 +1,47 @@
-import { composePlugins, withNx, withReact } from '@nx/rspack';
-import { withModuleFederation } from '@nx/rspack/module-federation';
-import { join } from 'node:path';
-import mfConfig from './module-federation.config';
-import { withZephyr } from 'zephyr-webpack-plugin';
+import { composePlugins, withNx, withReact } from "@nx/rspack";
+import { withModuleFederation } from "@nx/rspack/module-federation";
+import { join } from "node:path";
+import mfConfig from "./module-federation.config";
+import { withZephyr } from "zephyr-webpack-plugin";
 
 module.exports = composePlugins(
-  withNx(),
-  withReact(),
-  withModuleFederation(mfConfig),
-  withZephyr(),
-  (config, context) => {
-    config.module.rules = [
-      ...config.module.rules.filter(
-        (r) => r.type !== 'css/module' && r.type !== 'css'
-      ),
-    ];
+	withNx(),
+	withReact(),
+	withModuleFederation(mfConfig),
+	withZephyr(),
+	(config, context) => {
+		config.module.rules = [
+			...config.module.rules.filter(
+				(r) => r.type !== "css/module" && r.type !== "css",
+			),
+		];
 
-    config.module.rules.push({
-      test: /\.css$/,
-      type: 'css',
-      exclude: /node_modules\/|packages\/components/,
-      use: [
-        {
-          loader: 'postcss-loader',
-          options: {
-            postcssOptions: {
-              plugins: {
-                tailwindcss: {
-                  config: join(
-                    context.context.root,
-                    'apps/hero/tailwind.config.js'
-                  ),
-                },
-                autoprefixer: {},
-              },
-            },
-          },
-        },
-      ],
-    });
+		config.devtool = "source-map";
 
-    return config;
-  }
+		config.module.rules.push({
+			test: /\.css$/,
+			type: "css",
+			exclude: /node_modules\/|packages\/components/,
+			use: [
+				{
+					loader: "postcss-loader",
+					options: {
+						postcssOptions: {
+							plugins: {
+								tailwindcss: {
+									config: join(
+										context.context.root,
+										"apps/hero/tailwind.config.js",
+									),
+								},
+								autoprefixer: {},
+							},
+						},
+					},
+				},
+			],
+		});
+
+		return config;
+	},
 );

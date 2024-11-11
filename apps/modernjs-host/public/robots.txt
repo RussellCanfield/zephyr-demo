@@ -1,0 +1,17 @@
+# robots.txt for Elite T-Shirts
+
+User-agent: *
+Allow: /
+Allow: /products/
+Allow: /categories/
+
+# Prevent access to API routes and internal paths
+Disallow: /api/
+Disallow: /admin/
+Disallow: /internal/
+
+# Add your sitemap location
+Sitemap: https://your-domain.com/sitemap.xml
+
+# Crawl-delay for all bots
+Crawl-delay: 10

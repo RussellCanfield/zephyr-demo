@@ -19,6 +19,14 @@
         "commands": ["modern dev"]
       }
     },
+    "prod":  {
+      "executor": "nx:run-commands",
+      "options": {
+        "cwd": "apps/modernjs-host",
+        "commands": ["modern build", "modern serve"],
+        "parallel": false
+      }
+    },
     "test": {
       "executor": "@nx/vite:test",
       "outputs": ["{options.reportsDirectory}"],
