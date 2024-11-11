@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/modernjs-host/src",
   "projectType": "application",
+  "implicitDependencies": ["utils", "components"],
   "tags": [],
   "targets": {
     "build": {
