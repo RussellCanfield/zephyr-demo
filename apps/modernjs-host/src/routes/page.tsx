@@ -1,5 +1,9 @@
 import { Helmet } from '@modern-js/runtime/head';
 import './index.css';
+import { lazy, Suspense } from 'react';
+
+//@ts-expect-error
+const ProductsOnSale = lazy(() => import('hero/ProductsOnSale'));
 
 const Index = () => (
   <div className="container-box">
@@ -23,6 +27,9 @@ const Index = () => (
       <p className="description">
         Get started by editing <code className="code">src/routes/page.tsx</code>
       </p>
+      <Suspense>
+        <ProductsOnSale />
+      </Suspense>
       <div className="grid">
         <a
           href="https://modernjs.dev/guides/get-started/introduction.html"
