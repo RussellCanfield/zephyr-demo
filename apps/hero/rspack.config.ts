@@ -10,6 +10,9 @@ module.exports = composePlugins(
 	withModuleFederation(mfConfig),
 	withZephyr(),
 	(config, context) => {
+		config.entry =
+			config.mode === "product" ? "./src/noop.tsx" : "./src/main.ts";
+
 		config.module.rules = [
 			...config.module.rules.filter(
 				(r) => r.type !== "css/module" && r.type !== "css",
@@ -21,7 +24,7 @@ module.exports = composePlugins(
 		config.module.rules.push({
 			test: /\.css$/,
 			type: "css",
-			exclude: /node_modules\/|packages\/components/,
+			exclude: /node_modules\/(?!@acme\/components)|packages\/components/,
 			use: [
 				{
 					loader: "postcss-loader",

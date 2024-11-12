@@ -2,22 +2,27 @@ import Navbar from "@/layout/Navbar";
 import { Outlet } from "@modern-js/runtime/router";
 import "./index.css";
 import { init, preloadRemote } from "@module-federation/enhanced/runtime";
+import { ThemeProvider } from "@/layout/ThemeProvider";
+import "hero/shared";
 
 init({
 	name: "modernjs",
-	remotes: [
-		{
-			name: "hero",
-			entry: "http://localhost:4201/mf-manifest.json",
-		},
-	],
+	remotes: [],
 });
+
+preloadRemote([
+	{
+		nameOrAlias: "hero",
+	},
+]);
 
 export default function Layout() {
 	return (
-		<div>
+		<ThemeProvider>
 			<Navbar />
-			<Outlet />
-		</div>
+			<main className="h-full flex bg-white dark:bg-gray-900">
+				<Outlet />
+			</main>
+		</ThemeProvider>
 	);
 }

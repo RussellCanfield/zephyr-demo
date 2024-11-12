@@ -1,2 +1,2 @@
-import "./index.css";
+import "./shared.css";
 import("./bootstrap");

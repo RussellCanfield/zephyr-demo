@@ -39,7 +39,8 @@ const ImageLoader: FC<ImageProps> = ({ src, alt, className }) => {
 			className={className}
 			loading="lazy"
 			decoding="async"
-			fetchPriority="high"
+			//@ts-expect-error
+			fetchpriority="high"
 		/>
 	);
 };

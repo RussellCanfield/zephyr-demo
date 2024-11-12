@@ -1,4 +1,4 @@
-import Products from "@/features/Products/Products";
+import Cart from "@/features/Cart/Cart";
 import { htmlProps } from "@/utils/helmet";
 import { Helmet } from "@modern-js/runtime/head";
 
@@ -6,8 +6,8 @@ export default () => {
 	return (
 		<>
 			<Helmet htmlAttributes={htmlProps}>
-				<title>Products</title>
-				<meta name="description" content="Elite T-Shirts - Products" />
+				<title>Elite T-Shirts - Cart</title>
+				<meta name="description" content="Elite T-Shirts - Cart" />
 				<meta
 					name="viewport"
 					content="width=device-width, initial-scale=1.0, user-scalable=yes, maximum-scale=5"
@@ -19,7 +19,7 @@ export default () => {
 				/>
 			</Helmet>
 			<section>
-				<Products />
+				<Cart />
 			</section>
 		</>
 	);

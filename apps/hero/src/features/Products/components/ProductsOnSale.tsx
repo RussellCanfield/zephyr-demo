@@ -1,13 +1,13 @@
-import { ProductCarousel, useProducts } from '@acme/components';
+import { ProductCarousel, useProducts } from "@acme/components";
 
 const ProductsOnSale = () => {
-  const { productsOnSale } = useProducts();
+	const { productsOnSale } = useProducts();
 
-  return (
-    <section style={{ marginTop: '1rem' }}>
-      <ProductCarousel products={productsOnSale} />
-    </section>
-  );
+	return (
+		<section>
+			<ProductCarousel products={productsOnSale} />
+		</section>
+	);
 };
 
 export default ProductsOnSale;

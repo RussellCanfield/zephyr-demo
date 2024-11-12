@@ -3,11 +3,26 @@ import "./index.css";
 import { lazy, Suspense } from "react";
 import { htmlProps } from "@/utils/helmet";
 
-//@ts-expect-error
 const ProductsOnSale = lazy(() => import("hero/ProductsOnSale"));
+const ProductHero = lazy(() => import("hero/ProductHero"));
+
+const ProductHeroSkeleton = () => {
+	return (
+		<section className="h-[768px] relative" id="product-hero-skeleton">
+			<div className="absolute h-[768px] w-full bg-gray-200 animate-pulse">
+				<div className="absolute top-1/3 left-0 ml-8 p-2 rounded border border-black/20 bg-black/10">
+					<div className="w-64 h-8 bg-gray-300 rounded mb-2" />
+					<div className="w-48 h-6 bg-gray-300 rounded" />
+				</div>
+				<div className="h-full w-full bg-gray-300" />
+				<div className="w-[400px] h-[500px] absolute right-0 top-1/4 mr-8 transform -translate-y-1/4 bg-gray-300 rounded" />
+			</div>
+		</section>
+	);
+};
 
 const Index = () => (
-	<div className="container-box">
+	<div>
 		<Helmet htmlAttributes={htmlProps}>
 			<title>Elite T-Shirts</title>
 			<meta name="description" content="Elite T-Shirts, the best." />
@@ -21,89 +36,14 @@ const Index = () => (
 				href="https://lf3-static.bytednsdoc.com/obj/eden-cn/uhbfnupenuhf/favicon.ico"
 			/>
 		</Helmet>
-		<main>
-			<div className="title">
-				Welcome to
-				<img
-					className="logo"
-					src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/modern-js-logo.svg"
-					alt="Modern.js Logo"
-				/>
-				<p className="name">Modern.js</p>
-			</div>
-			<p className="description">
-				Get started by editing <code className="code">src/routes/page.tsx</code>
-			</p>
+		<Suspense fallback={<ProductHeroSkeleton />}>
+			<ProductHero />
+		</Suspense>
+		<section>
 			<Suspense>
 				<ProductsOnSale />
 			</Suspense>
-			<div className="grid">
-				<a
-					href="https://modernjs.dev/guides/get-started/introduction.html"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="card"
-				>
-					<h2>
-						Guide
-						<img
-							className="arrow-right"
-							src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-							alt="Guide"
-						/>
-					</h2>
-					<p>Follow the guides to use all features of Modern.js.</p>
-				</a>
-				<a
-					href="https://modernjs.dev/tutorials/foundations/introduction.html"
-					target="_blank"
-					className="card"
-					rel="noreferrer"
-				>
-					<h2>
-						Tutorials
-						<img
-							className="arrow-right"
-							src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-							alt="Tutorials"
-						/>
-					</h2>
-					<p>Learn to use Modern.js to create your first application.</p>
-				</a>
-				<a
-					href="https://modernjs.dev/configure/app/usage.html"
-					target="_blank"
-					className="card"
-					rel="noreferrer"
-				>
-					<h2>
-						Config
-						<img
-							className="arrow-right"
-							src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-							alt="Config"
-						/>
-					</h2>
-					<p>Find all configuration options provided by Modern.js.</p>
-				</a>
-				<a
-					href="https://github.com/web-infra-dev/modern.js"
-					target="_blank"
-					rel="noopener noreferrer"
-					className="card"
-				>
-					<h2>
-						Github
-						<img
-							className="arrow-right"
-							src="https://lf3-static.bytednsdoc.com/obj/eden-cn/zq-uylkvT/ljhwZthlaukjlkulzlp/arrow-right.svg"
-							alt="Github"
-						/>
-					</h2>
-					<p>View the source code of Github, feel free to contribute.</p>
-				</a>
-			</div>
-		</main>
+		</section>
 	</div>
 );
 
