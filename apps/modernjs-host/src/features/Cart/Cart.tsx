@@ -12,14 +12,14 @@ const Cart = () => {
 
 	if (!cart.products.length) {
 		return (
-			<div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4">
+			<div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 p-4">
 				<EmptyCart />
 			</div>
 		);
 	}
 
 	return (
-		<div className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen p-4">
+		<div className="bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 min-h-screen p-4">
 			<section>
 				<div className="flex items-center justify-between mb-4">
 					<h1 className="text-2xl font-bold">Cart</h1>
