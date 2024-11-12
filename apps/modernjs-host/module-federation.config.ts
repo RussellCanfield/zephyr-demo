@@ -7,7 +7,7 @@ export default createModuleFederationConfig({
 		hero: "hero@http://localhost:4201/mf-manifest.json",
 	},
 	shared: {
-		react: { singleton: true },
+		react: { singleton: true, requiredVersion: "18.3.1" },
 		"react-dom": { singleton: true },
 		"react-router-dom": { singleton: true },
 		"@heroicons/react": { singleton: true },

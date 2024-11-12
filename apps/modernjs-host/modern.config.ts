@@ -19,6 +19,15 @@ export default defineConfig({
 				},
 			],
 		},
+		distPath: {
+			html: "",
+		},
+		filename: {
+			html: "index.html",
+		},
+	},
+	html: {
+		disableHtmlFolder: true,
 	},
 	builderPlugins: [pluginImageCompress()],
 	plugins: [

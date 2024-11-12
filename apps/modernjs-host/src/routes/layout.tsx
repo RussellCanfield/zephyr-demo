@@ -5,16 +5,16 @@ import { init, preloadRemote } from "@module-federation/enhanced/runtime";
 import { ThemeProvider } from "@/layout/ThemeProvider";
 import "hero/shared";
 
-init({
-	name: "modernjs",
-	remotes: [],
-});
+// init({
+// 	name: "modernjs",
+// 	remotes: [],
+// });
 
-preloadRemote([
-	{
-		nameOrAlias: "hero",
-	},
-]);
+// preloadRemote([
+// 	{
+// 		nameOrAlias: "hero",
+// 	},
+// ]);
 
 export default function Layout() {
 	return (

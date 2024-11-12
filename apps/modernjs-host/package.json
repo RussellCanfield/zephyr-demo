@@ -1,10 +1,10 @@
 {
-  "name": "modernjs-host",
+  "name": "modernjs",
   "version": "0.1.0",
   "scripts": {
     "reset": "npx rimraf node_modules ./**/node_modules",
     "dev": "modern dev",
-    "build": "modern build",
+    "build": "DEBUG=zephyr:log,zephyr:error modern build",
     "start": "modern start",
     "serve": "modern serve",
     "new": "modern new",
