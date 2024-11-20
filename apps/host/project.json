@@ -46,6 +46,7 @@
       "options": {
         "commands": [
           "nx run components:watch",
+          "nx serve hero",
           "nx serve host"
         ],
         "parallel": true
