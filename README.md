@@ -8,6 +8,11 @@
 
 To start the development server run `pnpm start`. Open your browser and navigate to http://localhost:4200/. Happy coding!
 
+If you run into errors, try building the utils and components package manually.
+
+`npx nx build utils`
+`npx nx build components`
+
 ## Generate code
 
 If you happen to use Nx plugins, you can leverage code generators that might come with it.
